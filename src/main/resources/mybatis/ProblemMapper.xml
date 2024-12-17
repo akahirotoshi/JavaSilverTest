@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.app.mapper.ProblemMapper">
+
+<select id="selectAll" resultType="Problem">
+SELECT
+	problems.id, problems.name, problems.date
+	FROM problems
+</select>
+
+<select id="selectById" parameterType="int" resultType="Problem">
+SELECT
+	problems.id, problems.name, problems.date
+	FROM problems
+	WHERE problems.id = #{id}
+</select>
+
+<insert id="insert" parameterType="Problem">
+	INSERT INTO problems (name,date)
+	VALUES (#{name}, NOW())
+</insert>
+	
+<update id="update" parameterType="Problem">
+	UPDATE problems
+	SET name = #{name}
+	WHERE id = #{id}
+</update>
+
+<delete id="delete" parameterType="int">
+	DELETE FROM problems WHERE id = #{id}
+</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
